@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <!-- מטא-תגים בסיסיים -->
+    <meta charset="utf-8" />
+    <title>פרויקט מסכם - קורס תכנות 3</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- טעינת גופנים חיצוניים מאתר הגופנים -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- קובצי העיצוב הראשיים של דף הצ'אט -->
+    <link href="css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="css/chatbot.css" rel="stylesheet" />
+
+    <!-- קובצי הסקריפטים המשויכים לדף הצ'אט -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/javascript.js"></script>
+</head>
+<body>
+
+    <!-- כותרת עליונה - תפריט ניווט -->
+
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <!-- כפתור המבורגר לתצוגה ניידת -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- תפריט ניווט -->
+            <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">דף הבית</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="chatbot.html">ChatBot התרגול</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link about-btn" href="#">אודות</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- לוגו בכותרת -->
+            <div class="navbar-logo">
+                <img src="css/Images/Aticon.png" alt="Logo" class="header-logo">
+            </div>
+        </div>
+    </nav>
+    
+    <!-- תוכן ראשי - אזור הצ'אט הלימודי -->
+    <main class="container mt-4">
+        <h1 class="text-center mb-4">ChatBot התרגול</h1>
+
+        <div class="card shadow-sm chat-card">
+            <div id="chatWindow" class="card-body overflow-auto d-flex flex-column gap-3 bg-light">
+
+                <div class="message-wrapper bot-wrapper">
+                    <img src="css/Images/Robot.png" alt="Bot" class="bot-avatar">
+                    <div class="message bot-message p-3 rounded shadow-sm">
+                        <span class="welcome-title">ברוכים הבאים לצ'אט התרגול של אתחלתא!</span><br>
+                        קראו את השאלה, השיבו עליה וקבלו משוב שיסייע לכן להעמיק את ההבנה.<br><br>
+                        <div id="openingQuestionArea">
+                            <span class="typing-indicator">
+                                <span class="typing-dot"></span>
+                                <span class="typing-dot"></span>
+                                <span class="typing-dot"></span>
+                            </span>
+                            <em>טוען שאלה לתרגול...</em>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card-footer bg-white">
+                <div class="input-group">
+                    <input type="text" id="userMessage" class="form-control" placeholder="הקלידו הודעה..." aria-label="Message">
+                    <button class="btn btn-primary" type="button">שליחה</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- כותרת תחתונה -->
+  
+    <footer class="footer-custom text-center">
+        <div class="container">
+            <div class="footer-content">
+                <!-- כפתור צור קשר -->
+                <div class="footer-contact">
+                    <span class="contact-btn" role="button" tabindex="0" aria-label="צור קשר">צור קשר</span>
+                </div>
+                <!-- לוגו בתחתית -->
+                <div class="footer-logo">
+                    <img src="css/Images/Aticon.png" alt="Logo" class="footer-logo-img">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- חלונית אודות -->
+    <div id="aboutPopup" class="about-popup">
+        <!-- רקע מעומעם -->
+        <div class="about-overlay"></div>
+        <!-- מיכל התוויות -->
+        <div class="about-notes-container">
+            <!-- כפתור סגירה -->
+            <button class="close-popup-btn" aria-label="Close">×</button>
+            <!-- תווית 1: אודות הבוט -->
+            <div class="note-wrapper">
+                <img src="css/Images/Note.png" alt="Note" class="note-image">
+                <div class="note-content">
+                    <h3 class="note-title">אודות הבוט</h3>
+                    <p class="note-body">פיתחנו את הצ'אט של אתחלתא ככלי תרגול דיגיטלי שמטרתו לאפשר העמקה והיכרות עם עקרונות תוכנית אתחלתא.
+                        הבוט מציג שאלות לימודיות קצרות המבוססות על חומרי התוכנית, ומאפשר למשתמשים להתנסות במענה ולקבל משוב תומך המעודד רפלקציה וחשיבה מקצועית.
+                        הכלי נועד לשמש אמצעי משלים ללמידה, חזרה והעמקה בתכני התוכנית.</p>
+                </div>
+            </div>
+            <!-- תווית 2: אודות הקורס -->
+            <div class="note-wrapper">
+                <img src="css/Images/Note.png" alt="Note" class="note-image">
+                <div class="note-content">
+                    <h3 class="note-title">אודות הקורס</h3>
+                    <p class="note-body">הפרויקט פותח במסגרת קורס תכנות 3
+                        מרצי הקורס: ד״ר דן כהן וקס ואלומה אפל
+                        מגישות: נעמי מאור, סיון עמרם, שחר סביר</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- חלונית צור קשר -->
+    <div id="contactPopup" class="about-popup" role="dialog" aria-labelledby="contactPopupTitle" aria-modal="true">
+        <!-- רקע מעומעם -->
+        <div class="about-overlay"></div>
+        <!-- מיכל התווית -->
+        <div class="about-notes-container">
+            <!-- כפתור סגירה -->
+            <button class="close-popup-btn" aria-label="סגור">×</button>
+            <!-- תווית צור קשר -->
+            <div class="note-wrapper">
+                <img src="css/Images/Note.png" alt="Note" class="note-image">
+                <div class="note-content">
+                    <h3 class="note-title">צור קשר</h3>
+                    <p class="note-body">נשמח לשמוע ממך! השאר פרטים ונחזור אליך בהקדם.
+
+                        זמן תגובה: בדרך כלל תוך 24-48 שעות
+                        אנא כלול: שם, מספר טלפון, נושא הפנייה והודעה</p>
+                    <!-- כפתור לשליחת אימייל -->
+                    <button class="note-cta-btn" aria-label="שלח אימייל" type="button">
+                        שלח אימייל
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+</body>
+</html>
