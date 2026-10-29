@@ -1,0 +1,787 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Assistant', sans-serif;
+    direction: rtl;
+    text-align: right;
+}
+
+* {
+    font-family: 'Assistant', sans-serif;
+}
+
+input, textarea, select, button {
+    direction: rtl;
+    text-align: right;
+}
+
+main {
+    flex: 1;
+}
+
+/* Header Styles */
+.navbar-custom {
+    background-color: #65C0C0 !important;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: #fff !important;
+}
+
+.navbar-custom .nav-link:hover {
+    color: #f0f0f0 !important;
+}
+
+.navbar-custom .nav-link.active {
+    color: #ffebee !important;
+}
+
+.navbar-custom .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-custom .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.header-logo {
+    max-height: 3.125rem; /* 50px */
+    width: auto;
+    height: auto;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-logo {
+        margin-right: 0;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Banner Styles */
+.banner-container {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.banner-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #006767;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.6;
+    z-index: 1;
+}
+
+/* Mobile view - limit banner size */
+@media (max-width: 768px) {
+    .banner-image {
+        max-height: 12.5rem; /* 200px */
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+    }
+    
+    .banner-text {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+}
+
+/* Squares Styles */
+.squares-container {
+    padding: 2rem 0;
+}
+
+.square-box {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    aspect-ratio: 1;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.square-title {
+    color: #F69896;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin: 0 0 1rem 0;
+    line-height: 1.4;
+}
+
+.square-icon {
+    max-width: 60%;
+    max-height: 50%;
+    object-fit: contain;
+}
+
+.square-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile view - ensure squares stack */
+@media (max-width: 767.98px) {
+    .squares-container {
+        padding: 1.5rem 0;
+    }
+    
+    .square-box {
+        margin-bottom: 1rem;
+        padding: 1rem;
+    }
+    
+    .square-title {
+        font-size: 0.95rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .square-icon {
+        max-width: 50%;
+        max-height: 45%;
+    }
+}
+
+/* Footer Styles */
+.footer-custom {
+    background-color: #65C0C0;
+    color: #fff;
+    padding: 0.5rem 0;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.footer-contact {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 1rem;
+    margin-right: -0.9375rem; /* -15px */
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0;
+    margin-left: -0.9375rem; /* -15px */
+}
+
+.footer-logo-img {
+    max-height: 1.875rem; /* 30px */
+    width: auto;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .footer-contact {
+        margin-right: 0;
+    }
+    
+    .footer-logo {
+        justify-content: flex-end;
+        margin-left: 0;
+    }
+    
+    .footer-logo-img {
+        max-height: 1.5625rem; /* 25px */
+    }
+}
+
+/* About Popup Styles */
+.about-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+.about-popup.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.about-notes-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    gap: 2rem;
+    max-width: 90%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.close-popup-btn {
+    position: absolute;
+    top: -0.9375rem;   /* -15px */
+    right: -0.9375rem; /* -15px */
+    width: 2.5rem;     /* 40px */
+    height: 2.5rem;    /* 40px */
+    border-radius: 50%;
+    background-color: #fff;
+    border: 2px solid #006767;
+    color: #006767;
+    font-size: 1.75rem; /* 28px */
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    z-index: 10;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-popup-btn:hover {
+    background-color: #006767;
+    color: #fff;
+}
+
+.note-wrapper {
+    position: relative;
+    max-width: 25rem; /* 400px */
+    width: 100%;
+}
+
+.note-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.note-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.note-title {
+    color: #006767;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    text-align: right;
+}
+
+.note-body {
+    color: #000;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: right;
+    margin: 0 0 1rem 0;
+    white-space: pre-line;
+}
+
+.note-cta-btn {
+    background-color: #006767;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Assistant', sans-serif;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.note-cta-btn:hover {
+    background-color: #004d4d;
+    transform: translateY(-2px);
+}
+
+.note-cta-btn:active {
+    transform: translateY(0);
+}
+
+/* Mobile view - stack notes vertically */
+@media (max-width: 768px) {
+    .about-notes-container {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+    
+    .note-wrapper {
+        max-width: 90%;
+    }
+    
+    .note-content {
+        padding: 1.5rem;
+    }
+    
+    .note-title {
+        font-size: 1.1rem;
+    }
+    
+    .note-body {
+        font-size: 0.85rem;
+    }
+    
+    .note-cta-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .close-popup-btn {
+        top: -0.625rem;   /* -10px */
+        right: -0.625rem; /* -10px */
+        width: 2.1875rem; /* 35px */
+        height: 2.1875rem;/* 35px */
+        font-size: 1.5rem;/* 24px */
+    }
+}
+
+/* Contact Popup Styles */
+.contact-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
+}
+
+.contact-popup.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.contact-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.contact-modal-container {
+    position: relative;
+    z-index: 2;
+    background-color: #fff;
+    border-radius: 12px;
+    max-width: 31.25rem; /* 500px */
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+}
+
+.contact-modal-content {
+    padding: 2.5rem;
+    text-align: right;
+    direction: rtl;
+}
+
+.contact-modal-title {
+    color: #006767;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: right;
+}
+
+.contact-modal-description {
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    text-align: right;
+}
+
+.contact-helpful-info {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.contact-helpful-info p {
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+    text-align: right;
+}
+
+.contact-helpful-info p:last-child {
+    margin-bottom: 0;
+}
+
+.contact-cta-btn {
+    width: 100%;
+    background-color: #006767;
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Assistant', sans-serif;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.contact-cta-btn:hover {
+    background-color: #004d4d;
+    transform: translateY(-2px);
+}
+
+.contact-cta-btn:active {
+    transform: translateY(0);
+}
+
+.contact-btn {
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.contact-btn:hover {
+    opacity: 0.8;
+}
+
+/* Mobile view for contact popup */
+@media (max-width: 768px) {
+    .contact-modal-container {
+        width: 95%;
+        max-height: 85vh;
+    }
+    
+    .contact-modal-content {
+        padding: 1.5rem;
+    }
+    
+    .contact-modal-title {
+        font-size: 1.5rem;
+    }
+    
+    .contact-modal-description {
+        font-size: 0.95rem;
+    }
+    
+    .contact-helpful-info {
+        padding: 1rem;
+    }
+    
+    .contact-helpful-info p {
+        font-size: 0.85rem;
+    }
+    
+    .contact-cta-btn {
+        padding: 0.9rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .contact-popup .close-popup-btn {
+        top: -0.625rem;   /* -10px */
+        right: -0.625rem; /* -10px */
+        width: 2.1875rem; /* 35px */
+        height: 2.1875rem;/* 35px */
+        font-size: 1.5rem;/* 24px */
+    }
+}
+
+/* ============================================ */
+/* Chatbot Area Styles */
+/* ============================================ */
+
+/* הגדרת גובה לכרטיס הצ'אט */
+.chat-card {
+    height: 70vh;
+}
+
+/* כותרת הודעת הפתיחה */
+.welcome-title {
+    color: #006767;
+    font-weight: 700;
+}
+
+/* אזור הצ'אט הראשי */
+#chatWindow {
+    background-color: #f8f9fa;
+    scrollbar-width: thin;
+}
+
+/* עיצוב כללי להודעה */
+.message {
+    max-width: 80%;
+    padding: 0.75rem 1rem;      /* 12px 16px */
+    margin-bottom: 0.625rem;    /* 10px */
+    font-size: 1rem;
+    line-height: 1.5;
+    position: relative;
+    word-wrap: break-word;
+}
+
+/* מיכל להודעת בוט עם תמונת פרופיל */
+.message-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;          /* 10px */
+    margin-bottom: 0.625rem;/* 10px */
+    max-width: 80%;
+}
+
+.message-wrapper.bot-wrapper {
+    align-self: flex-start;
+}
+
+.message-wrapper.user-wrapper {
+    align-self: flex-end;
+    flex-direction: row-reverse; /* RTL: profile picture on right for user */
+}
+
+/* תמונת פרופיל לבוט */
+.bot-avatar {
+    width: 2.5rem;   /* 40px */
+    height: 2.5rem;  /* 40px */
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid #e0e0e0;
+    background-color: #fff;
+}
+
+/* עיצוב הודעת הבוט */
+.bot-message {
+    align-self: flex-start;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    color: #333;
+    border-radius: 0 15px 15px 15px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    flex: 1;
+}
+
+/* עיצוב הודעת המשתמש */
+.user-message {
+    align-self: flex-end;
+    background-color: #d1e7dd; /* ירקרק עדין */
+    color: #0f5132;
+    border-radius: 15px 0 15px 15px;
+}
+
+/* אזור ההקלדה */
+.card-footer {
+    border-top: 1px solid #dee2e6;
+    padding: 1rem;
+    background-color: #fff;
+}
+
+.card-footer .input-group {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    border-radius: 0.375rem;
+    overflow: hidden;
+}
+
+.card-footer input {
+    border: 1px solid #ced4da;
+    padding: 0.75rem;
+}
+
+.card-footer input:focus {
+    border-color: #65C0C0;
+    box-shadow: 0 0 0 0.25rem rgba(101, 192, 192, 0.25);
+}
+
+.card-footer button {
+    background-color: #006767;
+    border: none;
+    color: white;
+    padding: 0 1.5rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.card-footer button:hover {
+    background-color: #004d4d;
+}
+
+/* אנימציית טעינה (3 נקודות) */
+.typing-indicator {
+    display: inline-flex;
+    align-items: center;
+    column-gap: 0.1875rem; /* 3px */
+}
+.typing-dot {
+    width: 0.375rem;  /* 6px */
+    height: 0.375rem; /* 6px */
+    background-color: #888;
+    border-radius: 50%;
+    animation: typing 1.4s infinite ease-in-out both;
+}
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typing {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+/* ============================================ */
+/* Action Buttons Styles */
+/* ============================================ */
+
+.action-buttons-container {
+    display: flex;
+    gap: 0.625rem;           /* 10px */
+    margin-top: 0.625rem;    /* 10px */
+    margin-bottom: 1.25rem;  /* 20px */
+    justify-content: flex-start; /* הצמדה לימין (בגלל RTL) או לשמאל תלוי בכיוון */
+    width: 80%; /* שיהיה ברוחב של הבועות */
+}
+
+.btn-action {
+    background-color: #be1778; /* ורוד מותגי */
+    color: white;
+    border: none;
+    border-radius: 1.25rem;     /* 20px */
+    padding: 0.5rem 1.25rem;    /* 8px 20px */
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.btn-action:hover {
+    background-color: #9d1263;
+    transform: translateY(-2px);
+}
+
+/* כפתור סיום - אולי עיצוב קצת שונה, למשל מסגרת ורודה ורקע לבן */
+.btn-finish {
+    background-color: #fff;
+    color: #be1778;
+    border: 1px solid #be1778;
+}
+
+.btn-finish:hover {
+    background-color: #fce4ec;
+    color: #be1778;
+}
+
+/* הסתרת אזור ההקלדה כשמסתיימת השיחה */
+.input-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* תמונות שנוצרו על ידי הבוט */
+.bot-generated-image {
+    max-height: 12.5rem;  /* 200px */
+    margin-top: 0.625rem; /* 10px */
+    display: block;
+    border-radius: 0.25rem;
+}
+
+/* מיכל כפתורי הפעולה של הבוט */
+.bot-buttons-container {
+    margin-top: 0.9375rem; /* 15px */
+    border-top: 1px solid #eee;
+    padding-top: 0.625rem; /* 10px */
+}
+
+/* Responsive adjustments for profile pictures */
+@media (max-width: 768px) {
+    .bot-avatar {
+        width: 2.1875rem;  /* 35px */
+        height: 2.1875rem; /* 35px */
+    }
+    
+    .message-wrapper {
+        gap: 0.5rem; /* 8px */
+    }
+    
+    .message-wrapper.bot-wrapper {
+        max-width: 85%;
+    }
+}
