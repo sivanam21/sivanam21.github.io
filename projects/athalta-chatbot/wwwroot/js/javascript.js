@@ -305,9 +305,10 @@ async function fetchAndDisplayQuestion(isFirstTime) {
         // הסרת אינדיקטור טעינה אם זה לא פעם ראשונה
         if (!isFirstTime) removeLoadingIndicator("temp-loading");
 
-        if (response.ok) {
-            const data = await response.json();
+        // בלי שרת (למשל ב־GitHub Pages) עוברים למצב הדגמה
+        const data = response.ok ? await response.json() : getDemoQuestion();
 
+        if (data) {
             if (isFirstTime) {
                 targetArea.innerHTML = ""; // ניקוי אזור הפתיחה
 
@@ -330,10 +331,6 @@ async function fetchAndDisplayQuestion(isFirstTime) {
 
             // שמירה בהיסטוריה
             conversationHistory.push({ role: "assistant", content: data.content });
-
-        } else {
-            console.error("Server Error:", await response.text());
-            if(isFirstTime) targetArea.innerText = "שגיאה בטעינה.";
         }
     } catch (error) {
         console.error("Network error:", error);
@@ -376,11 +373,12 @@ async function sendMessage() {
             appendMessageWithButtons(botReply);
 
         } else {
-            appendMessage("שגיאה בקבלת תשובה.", "bot");
+            // בלי שרת (למשל ב־GitHub Pages) עוברים למצב הדגמה
+            appendMessageWithButtons(getDemoFeedback(userText));
         }
     } catch (error) {
         removeLoadingIndicator(loadingId);
-        appendMessage("שגיאה בתקשורת.", "bot");
+        appendMessageWithButtons(getDemoFeedback(userText));
     }
 }
 
